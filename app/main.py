@@ -6,7 +6,7 @@ import numpy as np
 
 def get_clean_data():
   
-    data=pd.read_csv("../data/data.csv")
+    data=pd.read_csv("data/data.csv")
     data = data.drop(['Unnamed: 32','id'],axis=1)
     #map values in daignosis to 1 and 0 , Malicious to 1 and other to 0
     data['diagnosis']=data['diagnosis'].map({'M':1,'B':0})
@@ -77,8 +77,8 @@ def get_scaled_values(input_dict):
   return scaled_dict
 
 def add_prediction(input_data):
-    model = pickle.load(open("../model/model.pkl", "rb"))  
-    scaler = pickle.load(open("../model/scaler.pkl", "rb"))
+    model = pickle.load(open("model/model.pkl", "rb"))  
+    scaler = pickle.load(open("model/scaler.pkl", "rb"))
 
     input_df = pd.DataFrame([input_data])  # Fix: Use DataFrame to retain feature names
 
@@ -167,7 +167,7 @@ def main():
     
     input_data=add_sidebar()
 
-    with open("../assets/style.css") as f:
+    with open("assets/style.css") as f:
         st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 
     with st.container():
